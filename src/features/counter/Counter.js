@@ -6,6 +6,7 @@ import {
   incrementByAmount,
   incrementAsync,
   selectCount,
+  setNewDRD,
 } from './counterSlice';
 import styles from './Counter.module.css';
 
@@ -38,7 +39,7 @@ export function Counter() {
           className={styles.textbox}
           aria-label="Set increment amount"
           value={incrementAmount}
-          onChange={e => setIncrementAmount(e.target.value)}
+          onChange={(e) => setIncrementAmount(e.target.value)}
         />
         <button
           className={styles.button}
@@ -53,6 +54,12 @@ export function Counter() {
           onClick={() => dispatch(incrementAsync(Number(incrementAmount) || 0))}
         >
           Add Async
+        </button>
+        <button
+          className={styles.button}
+          onClick={() => dispatch(setNewDRD(1813))}
+        >
+          DRD
         </button>
       </div>
     </div>
