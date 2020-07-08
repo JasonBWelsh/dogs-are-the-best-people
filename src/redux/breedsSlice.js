@@ -4,16 +4,23 @@ export const breedsSlice = createSlice({
   name: 'breeds',
   initialState: {
     breeds: [],
+    isLoading: false,
+    isError: false,
     drd: 1812,
   },
   reducers: {
     setBreedList: (state, action) => {
-      console.log('DRD __ inside  `setBreedList` reducer');
       state.breeds = action.payload;
+    },
+    setIsLoading: (state, action) => {
+      state.isLoading = action.payload;
+    },
+    setIsError: (state, action) => {
+      state.isError = action.payload;
     },
   },
 });
 
-export const { setBreedList } = breedsSlice.actions;
+export const { setBreedList, setIsLoading, setIsError } = breedsSlice.actions;
 
 export default breedsSlice.reducer;
