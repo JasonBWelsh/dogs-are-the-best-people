@@ -3,8 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setBreedList, setIsLoading, setIsError } from './redux/breedsSlice.js';
 import axios from 'axios';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { Counter } from './features/counter/Counter';
 import './App.css';
+// component imports
+import AppBarComponent from './components/AppBar/AppBar.js';
+// testing
+import { Button, Typography } from '@material-ui/core';
 
 function App() {
   const URL = 'https://api.TheDogAPI.com/v1/breeds';
@@ -12,7 +15,6 @@ function App() {
   const dispatch = useDispatch();
   const isBreedsLoading = useSelector((state) => state.breeds.isLoading);
   const isBreedsError = useSelector((state) => state.breeds.isError);
-  console.log('DRD isBreedsLoading selector:::', isBreedsLoading);
 
   useEffect(() => {
     async function fetchBreedData() {
@@ -35,10 +37,12 @@ function App() {
     <>
       <CssBaseline />
       <div className="App">
-        {/* <header className="App-header"><Counter /></header> */}
-        {isBreedsLoading && <div>LOADING...</div>}
-        {!isBreedsLoading && <div>Loaded!!!</div>}
-        {isBreedsError && <div>ERROR ERROR ERROR!!!</div>}
+        <AppBarComponent />
+        {isBreedsLoading && <Typography>LOADING...</Typography>}
+        {!isBreedsLoading && <Typography>Loaded!!!</Typography>}
+        {isBreedsError && <Typography>ERROR ERROR ERROR!!!</Typography>}
+        <Button variant={'outlined'}>This is my button</Button>
+        <Typography>I am the Typography component</Typography>
       </div>
     </>
   );
